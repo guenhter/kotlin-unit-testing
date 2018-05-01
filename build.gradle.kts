@@ -8,23 +8,30 @@ repositories {
     jcenter()
 }
 
+var junitVersion = "5.2.0"
+var junitPlatformLauncherVersion = "1.2.0"
+var spekVersion = "1.1.5"
+var assertJVersion = "3.9.1"
+var kluentVersion = "1.37"
+var junit5UnrollVersion = "0.1.2"
+
 dependencies {
     compile(kotlin("stdlib-jdk8"))
 
-    testCompile("org.jetbrains.spek:spek-api:1.1.5")
-    testCompile("org.jetbrains.spek:spek-subject-extension:1.1.5")
-    testCompile("org.jetbrains.spek:spek-data-driven-extension:1.1.5")
+    testCompile("org.jetbrains.spek:spek-api:$spekVersion")
+    testCompile("org.jetbrains.spek:spek-subject-extension:$spekVersion")
+    testCompile("org.jetbrains.spek:spek-data-driven-extension:$spekVersion")
 
-    testCompile("org.assertj:assertj-core:3.9.1")
-    testCompile("org.amshove.kluent:kluent:1.36")
+    testCompile("org.assertj:assertj-core:$assertJVersion")
+    testCompile("org.amshove.kluent:kluent:$kluentVersion")
 
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.1.0")
-    testCompile("org.junit.jupiter:junit-jupiter-params:5.1.0")
-    testCompile("com.github.blindpirate:junit5-unroll-extension:0.1.1")
+    testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testCompile("org.junit.jupiter:junit-jupiter-params:$junitVersion")
+    testCompile("com.github.blindpirate:junit5-unroll-extension:$junit5UnrollVersion")
 
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.1.0")
-    testRuntime("org.junit.platform:junit-platform-launcher:1.1.0")
-    testRuntime("org.jetbrains.spek:spek-junit-platform-engine:1.1.5")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+    testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformLauncherVersion")
+    testRuntime("org.jetbrains.spek:spek-junit-platform-engine:$spekVersion")
 }
 
 tasks.withType<KotlinCompile> {
