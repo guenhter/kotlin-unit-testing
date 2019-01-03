@@ -3,7 +3,6 @@ package com.github.guenhter.junit
 import com.github.guenhter.Calculator
 import com.github.guenhter.CalculatorImpl
 import org.amshove.kluent.`should be equal to`
-import org.amshove.kluent.`should be equal to`
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments

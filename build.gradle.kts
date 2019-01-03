@@ -1,22 +1,24 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.2.41"
+    kotlin("jvm") version "1.3.11"
 }
 
 repositories {
     jcenter()
 }
 
-var junitVersion = "5.2.0"
-var junitPlatformLauncherVersion = "1.2.0"
-var spekVersion = "1.1.5"
-var assertJVersion = "3.9.1"
-var kluentVersion = "1.37"
+var junitVersion = "5.3.2"
+var junitPlatformLauncherVersion = "1.3.2"
+var spek1Version = "1.1.5"
+var spek2Version = "2.0.0-rc.1"
+var assertJVersion = "3.11.1"
+var kluentVersion = "1.45"
 var junit5UnrollVersion = "0.1.2"
 
 dependencies {
     compile(kotlin("stdlib-jdk8"))
+    compile(kotlin("reflect"))
 
 
     // junit5 dependencies
@@ -27,12 +29,14 @@ dependencies {
     testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformLauncherVersion")
 
 
-    // spek dependencies
-    testCompile("org.jetbrains.spek:spek-api:$spekVersion")
-    testCompile("org.jetbrains.spek:spek-subject-extension:$spekVersion")
-    testCompile("org.jetbrains.spek:spek-data-driven-extension:$spekVersion")
-
-    testRuntime("org.jetbrains.spek:spek-junit-platform-engine:$spekVersion")
+    // spek2 dependencies
+    testImplementation("org.spekframework.spek2:spek-dsl-jvm:$spek2Version")  {
+        exclude(group = "org.jetbrains.kotlin")
+    }
+    testRuntimeOnly("org.spekframework.spek2:spek-runner-junit5:$spek2Version") {
+        exclude(group = "org.junit.platform")
+        exclude(group = "org.jetbrains.kotlin")
+    }
 
 
     // other nice junit and testing dependencies
@@ -51,7 +55,7 @@ tasks.withType<KotlinCompile> {
 tasks {
     "test"(Test::class) {
         useJUnitPlatform {
-            includeEngines("spek", "junit-jupiter")
+            includeEngines("spek2", "junit-jupiter")
         }
         reports.html.isEnabled = true
     }
