@@ -8,9 +8,8 @@ repositories {
     jcenter()
 }
 
-var junitVersion = "5.3.2"
-var junitPlatformLauncherVersion = "1.3.2"
-var spek1Version = "1.1.5"
+var junitVersion = "5.4.1"
+var junitPlatformLauncherVersion = "1.4.1"
 var spek2Version = "2.0.0-rc.1"
 var assertJVersion = "3.11.1"
 var kluentVersion = "1.45"
@@ -22,11 +21,7 @@ dependencies {
 
 
     // junit5 dependencies
-    testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
-    testCompile("org.junit.jupiter:junit-jupiter-params:$junitVersion")
-
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
-    testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformLauncherVersion")
+    testCompile("org.junit.jupiter:junit-jupiter:$junitVersion")
 
 
     // spek2 dependencies

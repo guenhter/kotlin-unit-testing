@@ -3,4 +3,4 @@ Shows how to write unit tests with different frameworks (junit, spek) using grad
 
 Used engines:
 * JUnit 5
-* Spek
+* Spek2
