@@ -3,6 +3,8 @@ package com.github.guenhter.junit
 import com.github.blindpirate.junit.extension.unroll.Param
 import com.github.blindpirate.junit.extension.unroll.Unroll
 import com.github.blindpirate.junit.extension.unroll.where
+import org.assertj.core.api.Assertions.assertThat
+import kotlin.math.max
 
 class UnrollExtesionTest {
 
@@ -13,6 +15,6 @@ class UnrollExtesionTest {
             7 _ 4 _ 7
             0 _ 0 _ 0
         }) {
-        assert(Math.max(a, b) == c)
+        assertThat(max(a, b)).isEqualTo(c)
     }
 }

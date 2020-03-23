@@ -1,27 +1,26 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.3.11"
+    kotlin("jvm") version "1.3.70"
 }
 
 repositories {
     jcenter()
 }
 
-var junitVersion = "5.4.1"
-var junitPlatformLauncherVersion = "1.4.1"
-var spek2Version = "2.0.0-rc.1"
-var assertJVersion = "3.11.1"
-var kluentVersion = "1.45"
+var junitVersion = "5.6.1"
+var spek2Version = "2.0.9"
+var assertJVersion = "3.15.0"
+var kluentVersion = "1.60"
 var junit5UnrollVersion = "0.1.2"
 
 dependencies {
-    compile(kotlin("stdlib-jdk8"))
-    compile(kotlin("reflect"))
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("reflect"))
 
 
     // junit5 dependencies
-    testCompile("org.junit.jupiter:junit-jupiter:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
 
 
     // spek2 dependencies
@@ -35,9 +34,9 @@ dependencies {
 
 
     // other nice junit and testing dependencies
-    testCompile("com.github.blindpirate:junit5-unroll-extension:$junit5UnrollVersion")
-    testCompile("org.assertj:assertj-core:$assertJVersion")
-    testCompile("org.amshove.kluent:kluent:$kluentVersion")
+    testImplementation("com.github.blindpirate:junit5-unroll-extension:$junit5UnrollVersion")
+    testImplementation("org.assertj:assertj-core:$assertJVersion")
+    testImplementation("org.amshove.kluent:kluent:$kluentVersion")
 
 }
 
