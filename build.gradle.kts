@@ -1,18 +1,17 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "1.9.0"
 }
 
 repositories {
     mavenCentral()
 }
 
-var junitVersion = "5.9.1"
+var junitVersion = "5.9.3"
 var spek2Version = "2.0.19"
-var assertJVersion = "3.23.1"
-var kluentVersion = "1.72"
-var junit5UnrollVersion = "0.1.2"
+var assertJVersion = "3.24.2"
+var kluentVersion = "1.73"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -34,12 +33,6 @@ dependencies {
     testImplementation("org.assertj:assertj-core:$assertJVersion")
     testImplementation("org.amshove.kluent:kluent:$kluentVersion")
 
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 tasks.test {
