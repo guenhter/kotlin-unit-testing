@@ -1,16 +1,16 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "2.0.20"
 }
 
 repositories {
     mavenCentral()
 }
 
-var junitVersion = "5.9.3"
+var junitVersion = "5.11.0"
 var spek2Version = "2.0.19"
-var assertJVersion = "3.24.2"
+var assertJVersion = "3.26.3"
 var kluentVersion = "1.73"
 
 dependencies {
