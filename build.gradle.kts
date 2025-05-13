@@ -1,16 +1,14 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "2.0.20"
+    kotlin("jvm") version "2.1.20"
 }
 
 repositories {
     mavenCentral()
 }
 
-var junitVersion = "5.11.0"
+var junitVersion = "5.12.1"
 var spek2Version = "2.0.19"
-var assertJVersion = "3.26.3"
+var assertJVersion = "3.27.3"
 var kluentVersion = "1.73"
 
 dependencies {
@@ -19,6 +17,7 @@ dependencies {
 
     // junit5 dependencies
     testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // spek2 dependencies
     testImplementation("org.spekframework.spek2:spek-dsl-jvm:$spek2Version")  {
@@ -35,7 +34,7 @@ dependencies {
 
 }
 
-tasks.test {
+tasks.named<Test>("test") {
     useJUnitPlatform {
         includeEngines("spek2", "junit-jupiter")
     }
