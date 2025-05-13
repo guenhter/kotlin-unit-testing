@@ -1,7 +1,6 @@
 package com.github.guenhter.spek2
 
 import com.github.guenhter.CalculatorImpl
-import org.amshove.kluent.`should be equal to`
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
@@ -13,25 +12,25 @@ class CalculatorSpek : Spek({
 
         context("adding two numbers") {
             it("should be a positive sum when summing two positive numbers") {
-                calculator.add(1, 2) `should be equal to` 3
+                assert(calculator.add(1, 2) == 3)
             }
             it("should be a negative number when one number is negative and absolute-bigger than the other") {
-                calculator.add(1, -2) `should be equal to` -1
+                assert(calculator.add(1, -2) == -1)
             }
             it("should be a positive number when one number is negative and absolute-smaller than the other") {
-                calculator.add(2, -1) `should be equal to` 1
+                assert(calculator.add(2, -1) == 1)
             }
             it("should be zero when one number is negative and absolute-equal to the positive one") {
-                calculator.add(2, -2) `should be equal to` 0
+                assert(calculator.add(2, -2) == 0)
             }
         }
 
         context("subtracting two numbers") {
             it("should be a positive sum when subtracting a negative number from a positive number") {
-                calculator.subtract(2, -2) `should be equal to` 4
+                assert(calculator.subtract(2, -2) == 4)
             }
             it("should be a positive number when subtracting a positive number from a negative number") {
-                calculator.subtract(-2, 2) `should be equal to` -4
+                assert(calculator.subtract(-2, 2) == -4)
             }
         }
     }
@@ -46,7 +45,7 @@ class AssertionsSpek : Spek({
         it("check some assertions") {
             assertEquals(3, calculator.add(1, 2))
 
-            calculator.add(1, 2) `should be equal to` 3
+            assert(calculator.add(1, 2) == 3)
 
         }
     }
@@ -82,19 +81,19 @@ class AssertionsSpek : Spek({
 //
 //        on_data("addition %s and %s", with = *additionData) { num1, num2, expected ->
 //            it("returns $expected") {
-//                calculator.add(num1, num2) `should be equal to` expected
+//                assert(calculator.add(num1, num2) == expected)
 //            }
 //        }
 //
 //        on_data("subtract %s and %s", with = *subtractData) { num1, num2, expected ->
 //            it("returns $expected") {
-//                calculator.subtract(num1, num2) `should be equal to` expected
+//                assert(calculator.subtract(num1, num2) == expected)
 //            }
 //        }
 //
 //        on_data("divide %s and %s", with = *divideData) { num1, num2, expected ->
 //            it("returns $expected") {
-//                calculator.subtract(num1, num2) `should be equal to` expected
+//                assert(calculator.subtract(num1, num2) == expected)
 //            }
 //        }
 //    }

@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.20"
+    kotlin("plugin.power-assert") version "2.1.20"
 }
 
 repositories {
@@ -9,7 +10,6 @@ repositories {
 var junitVersion = "5.12.1"
 var spek2Version = "2.0.19"
 var assertJVersion = "3.27.3"
-var kluentVersion = "1.73"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -30,7 +30,6 @@ dependencies {
 
     // other nice junit and testing dependencies
     testImplementation("org.assertj:assertj-core:$assertJVersion")
-    testImplementation("org.amshove.kluent:kluent:$kluentVersion")
 
 }
 
