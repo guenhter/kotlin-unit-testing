@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import java.util.stream.Stream
 
 
 object CalculatorTest {
@@ -97,45 +96,44 @@ object CalculatorTest {
 
 
     @ParameterizedTest
-    @MethodSource(value = ["additionNumberProvider"])
+    @MethodSource("additionNumberProvider")
     fun `addition of two numbers (with params)`(num1: Int, num2: Int, expected: Int) {
         assert(calculator.add(num1, num2) == expected)
     }
 
     @ParameterizedTest
-    @MethodSource(value = ["subtractionNumberProvider"])
+    @MethodSource("subtractionNumberProvider")
     fun `subtraction of two numbers (with params)`(num1: Int, num2: Int, expected: Int) {
         assert(calculator.subtract(num1, num2) == expected)
     }
 
     @ParameterizedTest
-    @MethodSource(value = ["multiplyNumberProvider"])
+    @MethodSource("multiplyNumberProvider")
     fun `multiplication of two numbers (with params)`(num1: Int, num2: Int, expected: Int) {
         assert(calculator.multiply(num1, num2) == expected)
     }
 
     @JvmStatic
-    fun additionNumberProvider(): Stream<Arguments> {
-        return Stream.of(
-                Arguments.of(1, 2, 3),
-                Arguments.of(1, 3, 4),
-                Arguments.of(5, 7, 12),
-                Arguments.of(-3, 3, 0))
-    }
+    fun additionNumberProvider() = listOf(
+        Arguments.of(1, 2, 3),
+        Arguments.of(1, 3, 4),
+        Arguments.of(5, 7, 12),
+        Arguments.of(-3, 3, 0),
+    )
+
     @JvmStatic
-    fun subtractionNumberProvider(): Stream<Arguments> {
-        return Stream.of(
-                Arguments.of(1, 2, -1),
-                Arguments.of(1, 3, -2),
-                Arguments.of(5, 7, -2),
-                Arguments.of(-3, 3, -6))
-    }
+    fun subtractionNumberProvider() = listOf(
+        Arguments.of(1, 2, -1),
+        Arguments.of(1, 3, -2),
+        Arguments.of(5, 7, -2),
+        Arguments.of(-3, 3, -6),
+    )
+
     @JvmStatic
-    fun multiplyNumberProvider(): Stream<Arguments> {
-        return Stream.of(
-                Arguments.of(1, 2, 2),
-                Arguments.of(1, 3, 3),
-                Arguments.of(5, 7, 35),
-                Arguments.of(-3, 3, -9))
-    }
+    fun multiplyNumberProvider() = listOf(
+        Arguments.of(1, 2, 2),
+        Arguments.of(1, 3, 3),
+        Arguments.of(5, 7, 35),
+        Arguments.of(-3, 3, -9),
+    )
 }

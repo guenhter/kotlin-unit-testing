@@ -1,41 +1,33 @@
 plugins {
-    kotlin("jvm") version "2.1.20"
-    kotlin("plugin.power-assert") version "2.1.20"
+    kotlin("jvm") version "2.3.20"
+    kotlin("plugin.power-assert") version "2.3.20"
 }
 
 repositories {
     mavenCentral()
 }
 
-var junitVersion = "5.12.1"
-var spek2Version = "2.0.19"
-var assertJVersion = "3.27.3"
+val junitVersion = "6.0.3"
+val kotestVersion = "6.1.10"
+val assertJVersion = "3.27.7"
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
 
-    // junit5 dependencies
+    // junit dependencies
     testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitVersion")
 
-    // spek2 dependencies
-    testImplementation("org.spekframework.spek2:spek-dsl-jvm:$spek2Version")  {
-        exclude(group = "org.jetbrains.kotlin")
-    }
-    testRuntimeOnly("org.spekframework.spek2:spek-runner-junit5:$spek2Version") {
-        exclude(group = "org.junit.platform")
-        exclude(group = "org.jetbrains.kotlin")
-    }
+    // kotest dependencies (Kotlin-native testing framework, successor to Spek)
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
 
-    // other nice junit and testing dependencies
+    // other nice testing dependencies
     testImplementation("org.assertj:assertj-core:$assertJVersion")
-
 }
 
 tasks.named<Test>("test") {
-    useJUnitPlatform {
-        includeEngines("spek2", "junit-jupiter")
-    }
+    useJUnitPlatform()
     reports.html.required.set(true)
 }
