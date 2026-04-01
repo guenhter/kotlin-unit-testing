@@ -1,6 +1,6 @@
 # kotlin-unit-testing
-Shows how to write unit tests with different frameworks (junit, spek) using gradle
+Shows how to write unit tests with different frameworks (JUnit, Kotest) using Gradle
 
 Used engines:
-* JUnit 5
-* Spek2
+* JUnit 6
+* Kotest 6 (Kotlin-native testing framework, successor to Spek)
